@@ -4,10 +4,7 @@ def calibrate_values(path: str) -> int:
     return sum(calibration_values)
 
 def find_calibration_values(values: list[str]) -> list[int]:
-    calibration_values = list()
-    for value in values:
-        calibration_values.append(get_line(value))
-    return calibration_values
+    return [get_line(value) for value in values]
             
 def get_line(value: str):
     left = 0
@@ -25,6 +22,7 @@ def get_line(value: str):
         else:
             right_num = int(value[right])
             right = -1
+            
     return left_num * 10 + right_num
 
 def read_lines(path: str) -> list[str]:
