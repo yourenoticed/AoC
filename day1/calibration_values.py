@@ -13,7 +13,7 @@ def get_line(value: str):
             left += 1
         else:
             left_num = int(value[left])
-            left = len(value)
+            break
             
     right = len(value) -1
     while right >= 0:
@@ -21,7 +21,7 @@ def get_line(value: str):
             right -= 1
         else:
             right_num = int(value[right])
-            right = -1
+            break
             
     return left_num * 10 + right_num
 
