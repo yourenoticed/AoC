@@ -13,7 +13,7 @@ class Game():
     def is_game_possible(self, configuration: str) -> bool:
         for attempt in self.attempts:
             if self.check_color_intersection(attempt, configuration):
-                if not self.check_color_amounts(attempt, configuration):
+                if not self.check_color_presence(attempt, configuration):
                     return False
             else:
                 return False
@@ -26,7 +26,7 @@ class Game():
         return True
     
     # color amount in any attempt has to be less than or equal to the one in configuration
-    def check_color_amounts(self, attempt: dict[str: int], configuration: dict[str: int]):
+    def check_color_presence(self, attempt: dict[str: int], configuration: dict[str: int]):
         for color in attempt:
             if configuration.get(color) < attempt.get(color):
                 return False
@@ -49,10 +49,6 @@ class Main():
         lines = self.read_lines(path)
         games = self.get_games(lines)
         powers = [self.get_multiplication(game.get_needed_amount_of_colors()) for game in games]
-        
-        if DEBUGGING:
-            for game in games:
-                print(f'Game {game.id}: needed amount of colors: {game.get_needed_amount_of_colors()}')
         
         return sum(powers)
     
