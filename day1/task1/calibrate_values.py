@@ -29,4 +29,4 @@ def read_lines(path: str) -> list[str]:
     with open(path, "r") as file:
         return file.readlines()
 
-print(calibrate_values("day1/values.txt"))
+print(calibrate_values("day1/task1/values.txt"))
